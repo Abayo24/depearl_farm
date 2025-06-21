@@ -1,45 +1,87 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Platform } from 'react-native';
+import "../../global.css"
+import { Dimensions } from 'react-native';
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+export const unstable_settings = {
+  initialRouteName: 'index',
+};
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
+        tabBarActiveTintColor: '#009688',
+        tabBarInactiveTintColor: '#2F2F2F',
+        tabBarStyle:
+          {
+            backgroundColor: '#f9fafb',
+            height: 64, // Adjust height for better touch target
+            paddingBottom: 5, // Add padding for better spacing
+            paddingTop: 5, // Add padding for better spacing
+            borderTopWidth: 0,
+            elevation: 0,
+            shadowOpacity: 0,
+            shadowColor: 'transparent',
+            shadowOffset: { width: 0, height: 0 },
+            shadowRadius: 0,
           },
-          default: {},
-        }),
-      }}>
+        tabBarLabelStyle: {
+          fontFamily: 'inter',
+          fontSize: 12,
+          fontWeight: '400',
+        },
+        headerShown: false,
+        tabBarLabelPosition: 'below-icon'
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="index" // This maps to app/(tabs)/index.tsx (Home screen)
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="home" size={size} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="categories" // This maps to app/(tabs)/categories.tsx
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Categories',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="grid" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="favorites" // This maps to app/(tabs)/favorites.tsx
+        options={{
+          title: 'Favorites',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="heart" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="cart" // This maps to app/(tabs)/cart.tsx
+        options={{
+          title: 'Cart',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="cart" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="account" // This maps to app/(tabs)/account.tsx
+        options={{
+          title: 'Account',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="person" size={size} color={color} />
+          ),
         }}
       />
     </Tabs>
   );
 }
+

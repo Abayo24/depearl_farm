@@ -1,75 +1,69 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, Text, SafeAreaView, ScrollView, TouchableOpacity, Image, Dimensions } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import AutoScrollCarousel from '../../components/AutoScrollCarousel';
+import SaleCarousel from '../../components/SaleCarousel';
+import Header from '../../components/Header';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+// Get screen width for responsive padding if needed
+const { width } = Dimensions.get('window');
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <SafeAreaView className="flex-1 bg-gray-50">
+      <StatusBar style="dark" />
+      <ScrollView className="flex-grow">
+
+        {/* Container for Header and Search Bar */}
+        <View className="relative">
+
+          {/* Header Section */}
+          <Header />
+
+          {/* Search Bar */}
+          {/* Position it absolutely and use negative top to float it */}
+          <TouchableOpacity
+            className="absolute left-0 right-0 mx-[16%] flex-row items-center bg-white rounded-lg p-3 shadow-sm border border-gray-200"
+            style={{ top: '100%', marginTop: -44, zIndex: 10 }} // Adjust 'top' as needed, 'zIndex' ensures it's on top
+          >
+            <Ionicons name="search-outline" size={20} color="#6B7280" className="mr-2" />
+            <Text className="text-gray-500 flex-1 font-body">Type product name to search</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View className='mx-[4%] md:mx-[8%] lg:mx-[12%] xl:mx-[16%]'>
+
+          <View className="px-4 mt-4">
+
+            {/* Quick Categories/Best Sellers Section */}
+            <Text className="mb-4 font-subheading text-lg">Categories</Text>
+            <View className="flex-row flex-wrap justify-between mb-6 px-4">
+              {['Beef', 'Pork', 'Chicken', 'Lamb', 'Sausages', 'Steaks and Fillet'].map((item, index) => (
+                <TouchableOpacity key={index} className="w-[30%] p-4 items-center">
+                  <Image
+                    source={{ uri: `https://placehold.co/80x80/d1fae5/10b981?text=600x600` }}
+                    className="w-16 h-16 rounded-full mb-2"
+                  />
+                  <Text className="font-body">{item}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+
+            {/* Offers */}
+            <Text className="font-subheading mb-4 text-lg">Offer for you</Text>
+            <AutoScrollCarousel />
+
+            {/* Sale Carousel */}
+            <Text className="font-subheading mb-4 mt-6 text-lg">Sale for You</Text>
+            <SaleCarousel />
+
+            {/* Trending Carousel */}
+            <Text className="font-subheading mb-4 mt-6 text-lg">Product on trend</Text>
+            <SaleCarousel />
+          </View>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
