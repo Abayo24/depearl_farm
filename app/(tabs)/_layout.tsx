@@ -2,7 +2,6 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { Tabs } from 'expo-router';
 import React from 'react';
 import "../../global.css"
-import { Dimensions } from 'react-native';
 
 export const unstable_settings = {
   initialRouteName: 'index',
