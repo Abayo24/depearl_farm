@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, LayoutChangeEvent } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 
 const saleItems = [
@@ -40,11 +39,11 @@ const saleItems = [
 export default function SaleCarousel() {
 
     return (
-        <View>{(
+        <View className='m-4 h-auto'>{(
             <Carousel
                 data={saleItems}
                 width={300}
-                height={300}
+                height={260}
                 autoPlay
                 loop
                 autoPlayInterval={4000}
@@ -52,29 +51,27 @@ export default function SaleCarousel() {
                 pagingEnabled={true}
                 style={{ width: "100%" }}
                 renderItem={({ item }) => (
-                    <View className="flex-col w-88 mx-4 rounded-xl h-full bg-white overflow-hidden">
+                    <View className="flex-col w-[88%] rounded-xl h-[96%] bg-white shadow-lg overflow-hidden">
                         <Image
                             source={{ uri: item.image }}
-                            className="w-full h-32 rounded-t-lg"
+                            className="w-[100%] h-[45%] rounded-t-lg"
                             resizeMode="cover"
                         />
-                        <View className="flex-col flex-1 w-full bg-white p-3 justify-between">
-                            <View>
-                                <Text className="text-base font-semibold text-gray-800 mb-1">{item.name}</Text>
-                                <Text className="text-sm text-gray-600">{item.products}</Text>
-                                <Text className="text-xs text-emerald-600 mb-1">Use code: {item.promoCode}</Text>
+                        <View className="flex-col w-full bg-white p-4 justify-between items-start">
+                            <View className='w-full'>
+                                <Text className="text-base text-body font-semibold text-gray-800 mb-1">{item.name}</Text>
+                                <Text className="text-sm text-body text-gray-600">{item.products}</Text>
+                                <Text className="text-xs text-body text-promo mb-1">Use code: {item.promoCode}</Text>
                             </View>
-                            <View className="mt-1 w-full">
-                                <View className=" flex flex-row items-start mb-1">
+                                <View className=" flex flex-row w-full items-start justify-between">
                                     <Text className="text-primary font-bold mx-1 text-md">{item.newPrice}</Text>
                                     <Text className="line-through text-xs text-gray-400">{item.oldPrice}</Text>
+                                    <TouchableOpacity
+                                        className="bg-white border border-primary mx-4 py-2 px-3 rounded-lg self-start active:bg-primary"
+                                    >
+                                        <Text className="text-primary text-sm font-semibold active:text-white">Add to Cart</Text>
+                                    </TouchableOpacity>
                                 </View>
-                                <TouchableOpacity
-                                    className="bg-white border border-primary py-2 px-3 rounded-lg self-start active:bg-primary"
-                                >
-                                    <Text className="text-primary text-sm font-semibold active:text-white">Add to Cart</Text>
-                                </TouchableOpacity>
-                            </View>
                         </View>
                     </View>
 

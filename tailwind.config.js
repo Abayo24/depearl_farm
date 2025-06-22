@@ -8,7 +8,8 @@ module.exports = {
       colors: {
         primary: '#009688',       // Teal (Material Design)
         muted: '#2F2F2F',          // For text & inactive icons
-        background: '#ffffff',     // White background
+        background: '#ffffff', 
+        promo: '#EB8E57',   // White background
       },
       fontFamily: {
         heading: ['Poppins_700Bold', 'System'],

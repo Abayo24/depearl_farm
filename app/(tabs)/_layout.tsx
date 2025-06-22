@@ -17,9 +17,9 @@ export default function TabLayout() {
         tabBarStyle:
           {
             backgroundColor: '#f9fafb',
-            height: 64, // Adjust height for better touch target
-            paddingBottom: 5, // Add padding for better spacing
-            paddingTop: 5, // Add padding for better spacing
+            height: 72, // Adjust height for better touch target
+            paddingBottom: 8, // Add padding for better spacing
+            paddingTop: 8, // Add padding for better spacing
             borderTopWidth: 0,
             elevation: 0,
             shadowOpacity: 0,
