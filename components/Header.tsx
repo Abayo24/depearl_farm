@@ -2,12 +2,14 @@ import React from 'react';
 import { View, Text, TouchableOpacity, Platform } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useDrawer } from './DrawerContext';
 
 export default function Header() {
   const insets = useSafeAreaInsets();
+  const { openDrawer } = useDrawer();
 
   const containerStyle = {
-    paddingTop: Platform.OS === 'web' ? 24 : insets.top, // 24px top pad for web, safe area on native
+    paddingTop: Platform.OS === 'web' ? 24 : insets.top,
   };
 
   return (
@@ -24,7 +26,7 @@ export default function Header() {
           <Text className="text-sm font-body text-white">Best Meat Shop...</Text>
         </View>
       </View>
-      <TouchableOpacity className="p-2 border border-background rounded-lg">
+      <TouchableOpacity className="p-2 border border-background rounded-lg" onPress={openDrawer}>
         <Ionicons name="grid" size={24} color="#ffffff" />
       </TouchableOpacity>
     </View>

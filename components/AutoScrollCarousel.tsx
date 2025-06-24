@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Image, LayoutChangeEvent, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, Image } from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 
 const images = [

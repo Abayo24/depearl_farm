@@ -3,47 +3,36 @@ import Carousel from 'react-native-reanimated-carousel';
 
 const saleItems = [
     {
-        name: 'Starter Pack',
-        products: 'Beef + Chicken + Sausages',
-        promoCode: 'MEAT20',
+        name: '1 Pack',
+        products: 'Goat Meat',
         oldPrice: '$40.00',
         newPrice: '$32.00',
         image: 'https://placehold.co/300x150/ffe4e6/dc2626?text=Starter+Pack',
     },
     {
-        name: 'Family Feast',
-        products: 'Lamb + Pork + Chicken',
-        promoCode: 'FAMILY10',
+        name: '1 Pack',
+        products: 'Cleaned Prawns',
         oldPrice: '$75.00',
         newPrice: '$67.50',
         image: 'https://placehold.co/300x150/dbeafe/1d4ed8?text=Family+Feast',
     },
     {
-        name: 'BBQ Special',
-        products: 'Steak + Ribs + Wings',
-        promoCode: 'GRILL15',
+        name: '1 Pack',
+        products: 'Chicken Skinless',
         oldPrice: '$60.00',
         newPrice: '$51.00',
         image: 'https://placehold.co/300x150/c7d2fe/7c3aed?text=BBQ+Special',
     },
-    {
-        name: 'Protein Pro',
-        products: 'Sirloin + Chicken + Fillet',
-        promoCode: 'PRO25',
-        oldPrice: '$85.00',
-        newPrice: '$63.75',
-        image: 'https://placehold.co/300x150/b5f5ec/0f766e?text=Protein+Pro',
-    },
 ];
 
-export default function SaleCarousel() {
+export default function ProductCarousel() {
 
     return (
         <View className='m-4 h-auto'>{(
             <Carousel
                 data={saleItems}
                 width={300}
-                height={260}
+                height={240}
                 autoPlay
                 loop
                 autoPlayInterval={4000}
@@ -54,14 +43,13 @@ export default function SaleCarousel() {
                     <View className="flex-col w-[88%] rounded-xl h-[96%] bg-white shadow-lg overflow-hidden">
                         <Image
                             source={{ uri: item.image }}
-                            className="w-[100%] h-[45%] rounded-t-lg"
+                            className="w-[100%] h-[50%] rounded-t-lg"
                             resizeMode="cover"
                         />
                         <View className="flex-col w-full bg-white p-4 justify-between items-start">
                             <View className='w-full'>
                                 <Text className="text-xs font-body text-primary ">{item.name}</Text>
                                 <Text className="text-base font-subsubheading font-muted mb-1">{item.products}</Text>
-                                <Text className="text-xs text-body text-promo mb-1">Use code: {item.promoCode}</Text>
                             </View>
                                 <View className=" flex flex-row w-full items-start justify-between">
                                     <Text className="text-primary font-subheading mx-1 text-lg">{item.newPrice}</Text>

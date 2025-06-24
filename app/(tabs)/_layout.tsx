@@ -2,6 +2,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { Tabs } from 'expo-router';
 import React from 'react';
 import "../../global.css"
+import Header from '@/components/Header';
 
 export const unstable_settings = {
   initialRouteName: 'index',
@@ -11,6 +12,7 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
+        header: () => <Header />,
         tabBarActiveTintColor: '#009688',
         tabBarInactiveTintColor: '#2F2F2F',
         tabBarStyle:
@@ -81,6 +83,6 @@ export default function TabLayout() {
         }}
       />
     </Tabs>
+    
   );
 }
-
