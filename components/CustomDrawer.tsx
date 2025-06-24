@@ -1,54 +1,129 @@
 import React, { useRef, useEffect } from 'react';
-import { Animated, Dimensions, TouchableOpacity, View, Text } from 'react-native';
+import { Animated, Dimensions, TouchableOpacity, View, Text, Image } from 'react-native';
 import { useDrawer } from './DrawerContext';
+import { useRouter } from 'expo-router';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 const { width } = Dimensions.get('window');
 
 export default function CustomDrawer() {
-  const { isDrawerOpen, closeDrawer } = useDrawer();
-  const slideAnim = useRef(new Animated.Value(-width)).current;
+    const { isDrawerOpen, closeDrawer } = useDrawer();
+    const slideAnim = useRef(new Animated.Value(-width)).current;
+    const router = useRouter();
 
-  useEffect(() => {
-    Animated.timing(slideAnim, {
-      toValue: isDrawerOpen ? 0 : -width,
-      duration: 250,
-      useNativeDriver: true,
-    }).start();
-  }, [isDrawerOpen, slideAnim]);
+    useEffect(() => {
+        Animated.timing(slideAnim, {
+            toValue: isDrawerOpen ? 0 : -width,
+            duration: 250,
+            useNativeDriver: true,
+        }).start();
+    }, [isDrawerOpen, slideAnim]);
 
-  if (!isDrawerOpen) return null;
+    if (!isDrawerOpen) return null;
 
-  return (
-    <View className="absolute inset-0 ">
-      {/* Overlay */}
-      <TouchableOpacity
-        activeOpacity={1}
-        onPress={closeDrawer}
-        className="absolute inset-0 bg-black/40 z-40"
-      />
+    return (
+        <View className="absolute inset-0 ">
+            {/* Overlay */}
+            <TouchableOpacity
+                activeOpacity={1}
+                onPress={closeDrawer}
+                className="absolute inset-0 bg-black/40 z-40"
+            />
 
-      {/* Drawer */}
-      <Animated.View
-        style={{
-          backgroundColor: 'white',
-          height: '100%',
-          width: 240,
-          position: 'absolute',
-          padding: 20,
-          zIndex: 50,
-          transform: [{ translateX: slideAnim }],
-        }}
-      >
-        <Text className="text-[20px] font-bold mb-2.5 text-gray-900">Menu</Text>
+            {/* Drawer */}
+            <Animated.View
+                style={{
+                    backgroundColor: 'white',
+                    height: '100%',
+                    width: 240,
+                    position: 'absolute',
+                    zIndex: 50,
+                    transform: [{ translateX: slideAnim }],
+                }}
+            >
+                {/* Wrapper to space menu and footer */}
+                <View className="flex-1 justify-between">
 
-        <TouchableOpacity onPress={closeDrawer} className="py-2.5">
-          <Text className="text-[16px] text-gray-800">Profile</Text>
-        </TouchableOpacity>
+                    {/* Top section (header + menu) */}
+                    <View>
+                        {/* Drawer Header */}
+                        <View className="flex-row px-4 pt-2 bg-primary mb-6 items-center">
+                            <View className="w-12 h-12 rounded-lg overflow-hidden mb-3 bg-white">
+                                <Image
+                                    source={{ uri: 'https://i.pravatar.cc/150?img=3' }}
+                                    className="w-full h-full"
+                                    resizeMode="cover"
+                                />
+                            </View>
+                            <View className="flex-col h-full ml-2">
+                                <Text className="font-heading text-white text-base">Jane Doe</Text>
+                                <Text className="font-body text-white text-xs mt-1">jane.doe@example.com</Text>
+                            </View>
+                        </View>
 
-        <TouchableOpacity onPress={closeDrawer} className="py-2.5">
-          <Text className="text-[16px] text-gray-800">Settings</Text>
-        </TouchableOpacity>
-      </Animated.View>
-    </View>
-  );
+                        {/* Menu Items */}
+                        <View className="px-4 pt-2">
+                            <Text className="text-md font-subheading mb-2.5">MAIN MENU</Text>
+                            <TouchableOpacity onPress={() => router.push('/(tabs)')} className="flex-row justify-between py-2.5">
+                                <View className='flex-row items-center'>
+                                    <Ionicons name="home" size={16} color='#bdbdbd' />
+                                    <Text className="text-md font-body mx-4">Home</Text>
+                                </View>
+                                <Ionicons name="chevron-forward" size={16} color='#bdbdbd' />
+                            </TouchableOpacity>
+
+                            <TouchableOpacity onPress={() => router.push('/(tabs)/account')} className="flex-row justify-between py-2.5">
+                                <View className='flex-row items-center'>
+                                    <Ionicons name="person" size={16} color='#bdbdbd' />
+                                    <Text className="text-md font-body mx-4">Profile</Text>
+                                </View>
+                                <Ionicons name="chevron-forward" size={16} color='#bdbdbd' />
+                            </TouchableOpacity>
+
+                            <TouchableOpacity onPress={() => router.push('/(tabs)')} className="flex-row justify-between py-2.5">
+                                <View className='flex-row items-center'>
+                                    <Ionicons name="chatbubble" size={16} color='#bdbdbd' />
+                                    <Text className="text-md font-body mx-4">Chat</Text>
+                                </View>
+                                <Ionicons name="chevron-forward" size={16} color='#bdbdbd' />
+                            </TouchableOpacity>
+
+                            <TouchableOpacity onPress={() => router.push('/(tabs)/account')} className="flex-row justify-between py-2.5">
+                                <View className='flex-row items-center'>
+                                    <Ionicons name="exit" size={16} color='#bdbdbd' />
+                                    <Text className="text-md font-body mx-4">Logout</Text>
+                                </View>
+                                <Ionicons name="chevron-forward" size={16} color='#bdbdbd' />
+                            </TouchableOpacity>
+                        </View>
+
+                        <View className="px-4 pt-2">
+                            <Text className="text-md font-subheading mb-2.5">SETTINGS</Text>
+                            <TouchableOpacity onPress={() => router.push('/(tabs)')} className="flex-row justify-between py-2.5">
+                                <View className='flex-row items-center'>
+                                    <Ionicons name="home" size={16} color='#bdbdbd' />
+                                    <Text className="text-md font-body mx-4">Color Theme</Text>
+                                </View>
+                                <Ionicons name="chevron-forward" size={16} color='#bdbdbd' />
+                            </TouchableOpacity>
+
+                            <TouchableOpacity onPress={() => router.push('/(tabs)/account')} className="flex-row justify-between py-2.5">
+                                <View className='flex-row items-center'>
+                                    <Ionicons name="person" size={16} color='#bdbdbd' />
+                                    <Text className="text-md font-body mx-4">Dark Mode</Text>
+                                </View>
+                                <Ionicons name="chevron-forward" size={16} color='#bdbdbd' />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+
+                    {/* Sticky Footer */}
+                    <View className="px-4 py-4 border-t border-gray-200 bg-white">
+                        <Text className="text-md font-heading text-gray-800">DEPEARL FARM: Meat Shop</Text>
+                        <Text className="text-sm font-body text-gray-500">App Version 1.0</Text>
+                    </View>
+                </View>
+            </Animated.View>
+        </View>
+    );
 }
