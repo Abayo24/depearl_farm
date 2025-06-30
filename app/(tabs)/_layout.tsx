@@ -13,11 +13,11 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         header: () => <Header />,
-        tabBarActiveTintColor: '#009688',
-        tabBarInactiveTintColor: '#2F2F2F',
+        tabBarActiveTintColor: '#6B8E23',
+        tabBarInactiveTintColor: '#8B0000',
         tabBarStyle:
           {
-            backgroundColor: '#f9fafb',
+            backgroundColor: '#FAF3E0',
             height: 72, // Adjust height for better touch target
             paddingBottom: 8, // Add padding for better spacing
             paddingTop: 8, // Add padding for better spacing
@@ -68,6 +68,7 @@ export default function TabLayout() {
         name="cart" // This maps to app/(tabs)/cart.tsx
         options={{
           title: 'Cart',
+          tabBarStyle: { display: 'none' },
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="cart" size={size} color={color} />
           ),

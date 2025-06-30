@@ -10,7 +10,7 @@ import SearchOverlay from '../../components/SearchOverlay';
 
 export default function HomeScreen() {
   return (
-    <SafeAreaView className="flex-1 bg-white">
+    <SafeAreaView className="flex-1 bg-background">
       <StatusBar style="dark" />
       <ScrollView className="flex-grow">
 
@@ -25,19 +25,19 @@ export default function HomeScreen() {
           <View className="px-4 mt-4">
 
             {/* Quick Categories/Best Sellers Section */}
-            <Text className="mb-4 font-subheading text-lg">Categories</Text>
+            <Text className="mb-4 font-subheading text-lg text-primary">Categories</Text>
             <Category />
 
             {/* Offers */}
-            <Text className="font-subheading mb-4 text-lg">Offer for you</Text>
+            <Text className="font-subheading mb-4 text-lg text-primary">Offer for you</Text>
             <AutoScrollCarousel />
 
             {/* Sale Carousel */}
-            <Text className="font-subheading mb-4 mt-6 text-lg">Sale for You</Text>
+            <Text className="font-subheading mb-4 mt-6 text-lg text-primary">Sale for You</Text>
             <SaleCarousel />
 
             {/* Trending Carousel */}
-            <Text className="font-subheading mb-4 mt-6 text-lg">Product on trend</Text>
+            <Text className="font-subheading mb-4 mt-6 text-lg text-primary">Product on trend</Text>
             <ProductCarousel />
           </View>
         </View>

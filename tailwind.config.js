@@ -6,10 +6,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#009688',       // Teal (Material Design)
-        muted: '#2F2F2F',          // For text & inactive icons
-        background: '#ffffff', 
-        promo: '#EB8E57',   // White background
+        primary: '#8B0000',      // Teal (Material Design)
+        olive: '#6B8E23' , // Olive Green (Material Design)
+        muted: '#4a4a4a',          // For text & inactive icons
+        background: '#FAF3E0', 
+        promo: '#EB8E57',
+        code: '#F2D0C4',  
+        grey: '#A8A8A8',     // Gray background
+        greyLight: '#A5A5A5', // Light gray background
       },
       fontFamily: {
         heading: ['Poppins_700Bold', 'System'],

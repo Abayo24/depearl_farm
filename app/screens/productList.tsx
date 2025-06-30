@@ -1,11 +1,10 @@
+// screens/ProductList.tsx
 import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import {  View, FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
+import ProductCard from '@/components/ProductCard';
 import TextHeader from '@/components/TextHeader';
-import CartCard from '@/components/CartCard';
-import BillDetails from '@/components/BillDetails';
-import CheckoutBtn from '@/components/CheckoutBtn';
 
 const Products = [
   {
@@ -50,31 +49,24 @@ export default function ProductList() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-background" edges={['top']}>
-      <TextHeader title="Cart" />
+    <SafeAreaView className="flex-1 bg-white" edges={['top']}>
+      <TextHeader title="Product List" />
 
-      <View className="flex-1 px-[2%] md:px-[4%] lg:px-[8%] xl:px-[16%] pb-20 ">
+      <View className='px-[2%] md:px-[4%] lg:px-[8%] xl:px-[16%]'>
         <FlatList
-          data={Products}
-          keyExtractor={(item) => item.name}
-          renderItem={({ item }) => (
-            <CartCard
-              {...item}
-              onPress={() => handleProductPress(item.name)}
-            />
-          )}
-          ListHeaderComponent={
-            <View className="bg-code my-4 mx-2 p-2 rounded-lg border border-olive border-dashed items-center">
-              <Text className="font-body text-base">CODE:985AT5</Text>
-            </View>
-          }
-          ListFooterComponent={<BillDetails />}
-          showsVerticalScrollIndicator={false}
-        />
+        data={Products}
+        keyExtractor={(item) => item.name}
+        style={{ padding: 8 }}
+        renderItem={({ item }) => (
+          <ProductCard
+            {...item}
+            onPress={() => handleProductPress(item.name)}
+          />
+        )}
+        contentContainerStyle={{ paddingBottom: 24 }}
+        showsVerticalScrollIndicator={false}
+      />
       </View>
-
-      {/* Fixed Footer Checkout Button */}
-      <CheckoutBtn />
     </SafeAreaView>
   );
 }

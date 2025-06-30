@@ -19,15 +19,18 @@ export default function Header() {
     >
       <View className="flex-row items-center">
         <TouchableOpacity className="p-2">
-          <Ionicons name="location-outline" size={24} color="#ffffff" />
+          <Ionicons name="location-outline" size={24} color="#FAF3E0" />
         </TouchableOpacity>
         <View className="flex-col ml-2">
-          <Text className="text-lg font-heading text-white">Depearl Farm</Text>
-          <Text className="text-sm font-body text-white">Best Meat Shop...</Text>
+          <View className="flex-row items-center">
+            <Text className="text-lg font-heading text-background">Depearl</Text>
+            <Text className="text-lg font-heading text-olive">Farm</Text>
+          </View>
+          <Text className="text-sm font-body text-background">Best Meat Shop...</Text>
         </View>
       </View>
       <TouchableOpacity className="p-2 border border-background rounded-lg" onPress={openDrawer}>
-        <Ionicons name="grid" size={24} color="#ffffff" />
+        <Ionicons name="grid" size={24} color="#FAF3E0" />
       </TouchableOpacity>
     </View>
   );
