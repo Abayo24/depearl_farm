@@ -53,7 +53,7 @@ export default function ProductList() {
     <SafeAreaView className="flex-1 bg-background" edges={['top']}>
       <TextHeader title="Cart" />
 
-      <View className="flex-1 px-[2%] md:px-[4%] lg:px-[8%] xl:px-[16%] pb-20 ">
+      <View className="flex-1 px-[4%] md:px-[4%] lg:px-[8%] xl:px-[16%] pb-24">
         <FlatList
           data={Products}
           keyExtractor={(item) => item.name}

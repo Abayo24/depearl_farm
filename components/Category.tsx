@@ -25,9 +25,9 @@ export default function Category() {
           >
             <Image
               source={{ uri: `https://placehold.co/80x80/d1fae5/10b981?text=600x600` }}
-              className="w-16 h-16 rounded-full mb-2"
+              className="w-16 h-16 rounded-full mb-2 bg-white"
             />
-            <Text className="font-body text-center text-primary">{item}</Text>
+            <Text className="font-body text-sm text-center text-primary">{item}</Text>
           </TouchableOpacity>
         ))}
       </View>

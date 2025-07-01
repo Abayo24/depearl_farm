@@ -24,7 +24,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
     return (
         <TouchableOpacity
-            className="flex-row p-4 rounded-xl shadow-md bg-background my-2 border border-gray-100"
+            className="flex-row p-4 rounded-xl shadow-lg bg-background my-2"
             activeOpacity={0.9}
             onPress={onPress}
             accessibilityLabel={`View ${name} offer`}

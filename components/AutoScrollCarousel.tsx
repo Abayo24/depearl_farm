@@ -28,7 +28,7 @@ export default function AutoScrollCarousel() {
             <View className='w-88 h-full mx-4'>
               <Image
               source={{ uri: item }}
-              className="w-full h-full rounded-lg mb-2"
+              className="w-full h-full rounded-lg mb-2 bg-white"
               resizeMode="cover"
             />
             </View>

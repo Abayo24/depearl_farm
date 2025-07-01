@@ -51,7 +51,7 @@ export default function TabLayout() {
         options={{
           title: 'Categories',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="grid" size={size} color={color} />
+            <Ionicons name="albums" size={size} color={color} />
           ),
         }}
       />
@@ -70,7 +70,7 @@ export default function TabLayout() {
           title: 'Cart',
           tabBarStyle: { display: 'none' },
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="cart" size={size} color={color} />
+            <Ionicons name="bag" size={size} color={color} />
           ),
         }}
       />

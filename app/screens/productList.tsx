@@ -49,7 +49,7 @@ export default function ProductList() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-white" edges={['top']}>
+    <SafeAreaView className="flex-1 bg-background" edges={['top']}>
       <TextHeader title="Product List" />
 
       <View className='px-[2%] md:px-[4%] lg:px-[8%] xl:px-[16%]'>

@@ -20,12 +20,12 @@ export default function HomeScreen() {
           <SearchOverlay />
         </View>
 
-        <View className='mx-[4%] md:mx-[8%] lg:mx-[12%] xl:mx-[16%]'>
+        <View className='sm:mx-[4%] md:mx-[8%] lg:mx-[12%] xl:mx-[16%]'>
 
           <View className="px-4 mt-4">
 
             {/* Quick Categories/Best Sellers Section */}
-            <Text className="mb-4 font-subheading text-lg text-primary">Categories</Text>
+            <Text className="font-subheading text-lg text-primary">Categories</Text>
             <Category />
 
             {/* Offers */}
@@ -37,7 +37,7 @@ export default function HomeScreen() {
             <SaleCarousel />
 
             {/* Trending Carousel */}
-            <Text className="font-subheading mb-4 mt-6 text-lg text-primary">Product on trend</Text>
+            <Text className="font-subheading mb-4 text-lg text-primary">Product on trend</Text>
             <ProductCarousel />
           </View>
         </View>

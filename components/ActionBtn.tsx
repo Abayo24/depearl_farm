@@ -11,15 +11,19 @@ export default function ActionBtn({ buttonText }: ActionBtnProps) {
         if (buttonText === 'MAKE PAYMENT') {
             router.push('/screens/trackOrder');
         }
-        else if (buttonText === 'CONFIRM DELIVERY')
+        else if (buttonText === 'CONFIRM DELIVERY'){
         router.push('/(tabs)');
+        }
+        else {
+            router.push('/(tabs)/cart');
+        }
     };
 
     return (
-        <View className="absolute bottom-0 left-0 right-0 bg-background px-4 py-3 border-t border-gray-200 px-[2%] md:px-[4%] lg:px-[8%] xl:px-[16%]">
+        <View className="absolute bottom-0 left-0 right-0 px-4 pb-4 bg-background md:px-[4%] lg:px-[8%] xl:px-[16%]">
             <TouchableOpacity
                 onPress={handlePress}
-                className="flex-row bg-primary rounded-xl py-3 px-4 justify-center"
+                className="flex-row bg-primary rounded-xl py-4 px-4 justify-center"
             >
                 <Text className="text-background font-subheading text-sm">{buttonText}</Text>
             </TouchableOpacity>

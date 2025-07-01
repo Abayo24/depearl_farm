@@ -41,7 +41,7 @@ export default function CustomDrawer() {
       {/* Drawer */}
       <Animated.View
         style={{
-          backgroundColor: 'white',
+          backgroundColor: '#FAF3E0',
           height: '100%',
           width: 240,
           position: 'absolute',
@@ -129,7 +129,7 @@ export default function CustomDrawer() {
           </View>
 
           {/* Footer */}
-          <View className="px-4 py-4 border-t border-gray-200 bg-white">
+          <View className="px-4 py-4 border-t border-gray-200 bg-background">
             <Text className="text-md font-heading text-primary">DEPEARL FARM: Meat Shop</Text>
             <Text className="text-sm font-body text-muted">App Version 1.0</Text>
           </View>

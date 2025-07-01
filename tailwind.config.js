@@ -11,7 +11,8 @@ module.exports = {
         muted: '#4a4a4a',          // For text & inactive icons
         background: '#FAF3E0', 
         promo: '#EB8E57',
-        code: '#F2D0C4',  
+        code: '#F2D0C4',
+        border: '#bdbdbd',  
         grey: '#A8A8A8',     // Gray background
         greyLight: '#A5A5A5', // Light gray background
       },

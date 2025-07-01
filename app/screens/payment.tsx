@@ -25,12 +25,12 @@ export default function AccordionList() {
     <SafeAreaView className="flex-1 bg-background" edges={['top']}>
       <TextHeader title="Payment" />
 
-      <View className="w-full px-4 px-[2%] md:px-[4%] lg:px-[8%] xl:px-[16%] mt-4 mb-2">
+      <View className="w-full px-[4%] md:px-[4%] lg:px-[8%] xl:px-[16%] mt-4 mb-2">
         <Text className="text-lg font-subheading text-primary">
             Select payment method
         </Text>
       </View>
-      <View className="w-full mt-2 px-4 px-[2%] md:px-[4%] lg:px-[8%] xl:px-[16%] pb-24">
+      <View className="w-full mt-2 px-4 md:px-[4%] lg:px-[8%] xl:px-[16%] pb-24">
         {paymentOptions.map((item, index) => {
           const isActive = activeIndex === index;
 

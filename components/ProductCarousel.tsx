@@ -33,32 +33,39 @@ export default function ProductCarousel() {
             <Carousel
                 data={saleItems}
                 width={300}
-                height={240}
+                height={300}
                 autoPlay
                 loop
                 autoPlayInterval={4000}
                 scrollAnimationDuration={1200}
                 pagingEnabled={true}
-                style={{ width: "100%" }}
+                style={{ width: '100%' }}
                 renderItem={({ item }) => (
-                    <View className="flex-col mx-4 w-[88%] rounded-xl h-[96%] shadow-lg overflow-hidden">
-                        <Image
-                            source={{ uri: item.image }}
-                            className="w-[100%] h-[50%] rounded-t-lg"
-                            resizeMode="cover"
-                        />
-                        <View className="flex-col w-full bg-background p-4 justify-between items-start">
-                            <View className='w-full'>
-                                <Text className="text-xs font-body text-olive ">{item.name}</Text>
-                                <Text className="text-base font-subsubheading text-primary mb-1">{item.products}</Text>
-                            </View>
-                                <View className=" flex flex-row w-full items-start justify-between">
-                                    <Text className="text-primary font-subheading mx-1 text-lg">{item.newPrice}</Text>
-                                    <Text className="line-through text-xs text-gray-400">{item.oldPrice}</Text>
+                    <View className="flex-col w-[88%] mx-2 rounded-xl shadow-md overflow-visible bg-white">
+                                <Image
+                                  source={{ uri: item.image }}
+                                  className="w-full rounded-t-xl"
+                                  style={{ aspectRatio: 2 }} // Responsive image height
+                                  resizeMode="cover"
+                                />
+                                <View className="flex-col bg-background p-3 justify-between items-start rounded-b-xl">
+                                  <View className="mb-2">
+                                    <Text className="text-xs font-body text-olive">{item.name}</Text>
+                                    <Text className="text-base font-subsubheading text-primary mb-1">
+                                      {item.products}
+                                    </Text>
+                                  </View>
+                                  <View className="flex-row justify-between items-center w-full">
+                                    <Text className="text-primary font-subheading text-lg">
+                                      {item.newPrice}
+                                    </Text>
+                                    <Text className="line-through text-xs text-gray-400">
+                                      {item.oldPrice}
+                                    </Text>
                                     <AddButton />
+                                  </View>
                                 </View>
-                        </View>
-                    </View>
+                              </View>
 
                 )}
             />
